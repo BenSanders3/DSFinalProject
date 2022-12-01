@@ -6,7 +6,7 @@ namespace DSFinalProject
     {
         static void Main(string[] args)
         {
-            
+            //Console.WriteLine(DateTime.Now.ToString("HH:mm tt"));
         }
     }
 }
