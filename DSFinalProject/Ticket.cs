@@ -19,19 +19,27 @@ namespace DSFinalProject
             this.server = Console.ReadLine();
             Console.WriteLine("What is the table number?");
             this.tableNum = Console.ReadLine();
-            this.orderTime = DateTime.Now.ToString("HH:mm tt");
-            this.orders = CreateTicket();
+            this.orderTime = DateTime.Now.ToString("HH:mm:ss tt");
+            this.orders = GetOrders();
         }
 
         public Ticket(string server, string tableNum)
         {
             this.server = server;
             this.tableNum = tableNum;
-            this.orderTime = DateTime.Now.ToString("HH:mm tt");
-            this.orders = CreateTicket();
+            this.orderTime = DateTime.Now.ToString("HH:mm:ss tt");
+            this.orders = GetOrders();
         }
 
-        private ArrayList CreateTicket()
+        public int GetOrderTime()
+        {
+            var ticketTime = DateTime.Parse(this.orderTime);
+            var timespan = DateTime.Now - ticketTime;
+            int timeSince = Convert.ToInt32(timespan.TotalSeconds);
+            return timeSince;
+        }
+
+        private ArrayList GetOrders()
         {
             double priceHolder;
             int cont = 1;

@@ -12,6 +12,7 @@ namespace DSFinalProject
             Console.WriteLine("--------------------");
             Console.WriteLine();
             Console.WriteLine(shbumph.ToString());
+            Console.WriteLine(shbumph.GetOrderTime());
         }
     }
 }
