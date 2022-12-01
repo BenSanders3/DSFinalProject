@@ -9,19 +9,29 @@ namespace DSFinalProject
 {
     public class Ticket { 
         private string server;
-        private int tableNum;
+        private string tableNum;  // String in case table is called B10 (for Bar, seat 10) or something similar
         private string orderTime;
         private ArrayList orders;
 
-        public Ticket(string server, int tableNum)
+        public Ticket()
+        {
+            Console.WriteLine("What is the server name?\n");
+            this.server = Console.ReadLine();
+            Console.WriteLine("What is the table number?");
+            this.tableNum = Console.ReadLine();
+            this.orderTime = DateTime.Now.ToString("HH:mm tt");
+            this.orders = CreateTicket();
+        }
+
+        public Ticket(string server, string tableNum)
         {
             this.server = server;
             this.tableNum = tableNum;
             this.orderTime = DateTime.Now.ToString("HH:mm tt");
-            this.orders = CreateTicket(this.server, this.tableNum);
+            this.orders = CreateTicket();
         }
 
-        private ArrayList CreateTicket(string serverName, int tableName)
+        private ArrayList CreateTicket()
         {
             int cont = 1;
             ArrayList orderPriceList = new ArrayList();

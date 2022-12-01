@@ -7,6 +7,8 @@ namespace DSFinalProject
         static void Main(string[] args)
         {
             //Console.WriteLine(DateTime.Now.ToString("HH:mm tt"));
+            Ticket shbumph = new Ticket();
+            Console.WriteLine(shbumph.ToString());
         }
     }
 }
