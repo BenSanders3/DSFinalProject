@@ -15,7 +15,7 @@ namespace DSFinalProject
 
         public Ticket()
         {
-            Console.WriteLine("What is the server name?\n");
+            Console.WriteLine("What is the server name?");
             this.server = Console.ReadLine();
             Console.WriteLine("What is the table number?");
             this.tableNum = Console.ReadLine();
@@ -33,20 +33,33 @@ namespace DSFinalProject
 
         private ArrayList CreateTicket()
         {
+            double priceHolder;
             int cont = 1;
             ArrayList orderPriceList = new ArrayList();
             while (cont != 0)
             {
-                Console.WriteLine("What is the first order? \n");
+                Console.WriteLine("What is the order?");
                 orderPriceList.Add(Console.ReadLine());
-                Console.WriteLine("How much does it cost? \n$");
-                orderPriceList.Add(Console.ReadLine());
-                Console.WriteLine("Is there another order? (No == 0, Yes == 1)\n");
+                Console.Write("How much does it cost? \n$");
+                if(double.TryParse(Console.ReadLine(), out priceHolder))
+                {
+                    orderPriceList.Add(priceHolder.ToString("0.00"));
+                }
+                else
+                {
+                    Console.WriteLine("Price value not valid, please restart");
+                    orderPriceList.Clear();
+                    this.server = null;
+                    this.tableNum = null;
+                    this.orderTime = null;
+                    break;
+                }
+                Console.WriteLine("Is there another order? (No == 0, Yes == 1)");
                 if(int.TryParse(Console.ReadLine(), out cont))
                 {
-                    while (cont != 0 | cont != 1)
+                    while (cont != 0 & cont != 1)
                     {
-                        Console.WriteLine("Please enter 1 for \"Yes\" or 0 for \"No\"\n");
+                        Console.WriteLine("Please enter 1 for \"Yes\" or 0 for \"No\"");
                         if (int.TryParse(Console.ReadLine(), out cont))
                         {
 
@@ -55,6 +68,9 @@ namespace DSFinalProject
                         {
                             Console.WriteLine("Invalid value, please restart.");
                             orderPriceList.Clear();
+                            this.server = null;
+                            this.tableNum = null;
+                            this.orderTime = null;
                             cont = 0;
                         }
                     }
@@ -63,6 +79,9 @@ namespace DSFinalProject
                 {
                     Console.WriteLine("Invalid value, please restart.");
                     orderPriceList.Clear();
+                    this.server = null;
+                    this.tableNum = null;
+                    this.orderTime = null;
                     cont = 0;
                 }
             }
@@ -84,6 +103,7 @@ namespace DSFinalProject
                 {
                     x = x + y + "\n";
                     count = 1;
+
                 }
             }
 
