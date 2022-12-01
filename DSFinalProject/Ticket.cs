@@ -11,6 +11,7 @@ namespace DSFinalProject
         private string server;
         private string tableNum;  // String in case table is called B10 (for Bar, seat 10) or something similar
         private string orderTime;
+        private double orderTotal = 0.00;
         private ArrayList orders;
 
         public Ticket()
@@ -52,6 +53,7 @@ namespace DSFinalProject
                 if(double.TryParse(Console.ReadLine(), out priceHolder))
                 {
                     orderPriceList.Add(priceHolder.ToString("0.00"));
+                    this.orderTotal += priceHolder;
                 }
                 else
                 {
