@@ -10,7 +10,8 @@ namespace DSFinalProject
     public class Ticket { 
         private string server;
         private string tableNum;  // String in case table is called B10 (for Bar, seat 10) or something similar
-        private string orderTime;
+        private string orderPlaced;
+        private int orderTime;
         private double orderTotal = 0.00;
         private ArrayList orders;
 
@@ -20,7 +21,7 @@ namespace DSFinalProject
             this.server = Console.ReadLine();
             Console.WriteLine("What is the table number?");
             this.tableNum = Console.ReadLine();
-            this.orderTime = DateTime.Now.ToString("HH:mm:ss tt");
+            this.orderPlaced = DateTime.Now.ToString("HH:mm:ss tt");
             this.orders = GetOrders();
         }
 
@@ -28,16 +29,17 @@ namespace DSFinalProject
         {
             this.server = server;
             this.tableNum = tableNum;
-            this.orderTime = DateTime.Now.ToString("HH:mm:ss tt");
+            this.orderPlaced = DateTime.Now.ToString("HH:mm:ss tt");
             this.orders = GetOrders();
         }
 
-        public int GetOrderTime()
+        public void UpdateOrderTime()
         {
-            var ticketTime = DateTime.Parse(this.orderTime);
+            var ticketTime = DateTime.Parse(this.orderPlaced);
             var timespan = DateTime.Now - ticketTime;
             int timeSince = Convert.ToInt32(timespan.TotalSeconds);
-            return timeSince;
+            this.orderTime = timeSince;
+
         }
 
         private ArrayList GetOrders()
@@ -61,7 +63,7 @@ namespace DSFinalProject
                     orderPriceList.Clear();
                     this.server = null;
                     this.tableNum = null;
-                    this.orderTime = null;
+                    this.orderPlaced = null;
                     break;
                 }
                 Console.WriteLine("Is there another order? (No == 0, Yes == 1)");
@@ -80,7 +82,7 @@ namespace DSFinalProject
                             orderPriceList.Clear();
                             this.server = null;
                             this.tableNum = null;
-                            this.orderTime = null;
+                            this.orderPlaced = null;
                             cont = 0;
                         }
                     }
@@ -91,7 +93,7 @@ namespace DSFinalProject
                     orderPriceList.Clear();
                     this.server = null;
                     this.tableNum = null;
-                    this.orderTime = null;
+                    this.orderPlaced = null;
                     cont = 0;
                 }
             }
@@ -100,7 +102,7 @@ namespace DSFinalProject
 
         public override string ToString()
         {
-            string x = "Server: " + this.server + "\nTable: " + this.tableNum + "\n" + "Order Time: " + this.orderTime + "\n";
+            string x = "Server: " + this.server + "\nTable: " + this.tableNum + "\n" + "Order Time: " + this.orderPlaced + "\n";
             int count = 1;
             foreach (var y in this.orders)
             {
