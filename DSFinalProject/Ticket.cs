@@ -39,7 +39,7 @@ namespace DSFinalProject
             var timespan = DateTime.Now - ticketTime;
             int timeSince = Convert.ToInt32(timespan.TotalSeconds);
             this.orderTime = timeSince;
-
+            
         }
 
         private ArrayList GetOrders()
