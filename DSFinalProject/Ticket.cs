@@ -11,7 +11,6 @@ namespace DSFinalProject
         private string server;
         private string tableNum;  // String in case table is called B10 (for Bar, seat 10) or something similar
         private string orderPlaced;
-        private int orderTime;
         private double orderTotal = 0.00;
         private ArrayList orders;
 
@@ -31,15 +30,6 @@ namespace DSFinalProject
             this.tableNum = tableNum;
             this.orderPlaced = DateTime.Now.ToString("HH:mm:ss tt");
             this.orders = GetOrders();
-        }
-
-        public void UpdateOrderTime()
-        {
-            var ticketTime = DateTime.Parse(this.orderPlaced);
-            var timespan = DateTime.Now - ticketTime;
-            int timeSince = Convert.ToInt32(timespan.TotalSeconds);
-            this.orderTime = timeSince;
-            
         }
 
         private ArrayList GetOrders()
@@ -99,7 +89,18 @@ namespace DSFinalProject
             }
             return orderPriceList;
         }
-
+        public DateTime GetOrderTime()
+        {
+            DateTime returnDate;
+            if(DateTime.TryParse(this.orderPlaced, out returnDate))
+            {
+                return returnDate;
+            }
+            else
+            {
+                throw new Exception("DateTime not valid");
+            }
+        }
         public override string ToString()
         {
             string x = "Server: " + this.server + "\nTable: " + this.tableNum + "\n" + "Order Time: " + this.orderPlaced + "\n";
@@ -118,7 +119,7 @@ namespace DSFinalProject
 
                 }
             }
-
+            x = x + "Total:     $" + this.orderTotal;
             return x;
         }
     }
