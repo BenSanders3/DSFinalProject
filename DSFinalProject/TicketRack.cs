@@ -1,4 +1,30 @@
-﻿using System;
+﻿/**************************************************************
+* Name        : TicketRack.cs
+* Author      : Ben Sanders
+* Created     : 11/30/2022
+* Course      : CIS 169 - C#
+* Version     : 1.0
+* OS          : Windows 10
+* Copyright   : This is my own original work based on
+*               specifications issued by our instructor
+* Description : This program simulates a ticket rack at a restaurant.
+*               The user creates the rack, then can add ticket objects
+*               using the AddTicket() method. The method automatically
+*               sorts the rack on the addition of a ticket, but the
+*               user can also manually make the rack sort without adding
+*               a new ticket. The tickets are sorted based on the time
+*               they were created, so tickets that have existed for longer
+*               will be at the front, meaning you need to work on them first.
+*               This is because, at a restauraunt, you need to get tickets
+*               out as fast as possible, so you don't want a ticket to be
+*               sitting there for an hour while other tickets come and go
+*
+* Academic Honesty: I attest that this is my original work.
+* I have not used unauthorized source code, either modified or 
+* unmodified. I have not given other fellow student(s) access to
+* my program.         
+***************************************************************/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +47,7 @@ namespace DSFinalProject
             this.SortRack();  // automatically sorts uppon ticket addition. This simulates how a human would naturally sort the tickets when adding
         }
 
-        private void SortRack() // sorts all elements in rack
+        public void SortRack() // sorts all elements in rack
         {
             Ticket[] tickArray = new Ticket[this.tickets.Count]; // creates array that can move items around inside of it
             int count = 0;
