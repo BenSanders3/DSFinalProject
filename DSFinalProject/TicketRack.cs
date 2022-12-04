@@ -8,26 +8,26 @@ namespace DSFinalProject
 {
     public class TicketRack
     {
-        private Queue<Ticket> tickets;
+        private Queue<Ticket> tickets;  // creates priorityQueue to hold all tickets and is 1/2 of the required Data Structures for this assignment
 
-        public TicketRack()
+        public TicketRack()  // allows creation of ticket rack
         {
             this.tickets = new Queue<Ticket>();
         }
 
-        public void AddTicket(Ticket t)
+        public void AddTicket(Ticket t) // allows tickets to be added to ticket rack.
         {
-            this.tickets.Enqueue(t);
-            this.SortRack();
+            this.tickets.Enqueue(t);  
+            this.SortRack();  // automatically sorts uppon ticket addition. This simulates how a human would naturally sort the tickets when adding
         }
 
-        private void SortRack()
+        private void SortRack() // sorts all elements in rack
         {
-            Ticket[] tickArray = new Ticket[this.tickets.Count];
+            Ticket[] tickArray = new Ticket[this.tickets.Count]; // creates array that can move items around inside of it
             int count = 0;
             while (this.tickets.Count != 0)
             {
-                tickArray[count] = this.tickets.Dequeue();
+                tickArray[count] = this.tickets.Dequeue(); // adds all tickets to array
                 count++;
             }
             int len = tickArray.Length;
@@ -37,14 +37,13 @@ namespace DSFinalProject
                 int j = i - 1;
 
 
-                while (j >= 0 && tickArray[j].GetOrderTime() > curr)
+                while (j >= 0 && tickArray[j].GetOrderTime() > curr) // checks if the current element is smaller than its predecessor
                 {
-                    Ticket temp = tickArray[j + 1];
-                    tickArray[j + 1] = tickArray[j];
-                    tickArray[j] = temp;
+                    Ticket temp = tickArray[j + 1]; //stores current element in temp ticket
+                    tickArray[j + 1] = tickArray[j]; // sets current element to value of predecessor
+                    tickArray[j] = temp; // sets predecessor to temp tickets value, essentially swapping the two.
                     j = j - 1;
                 }
-
 
                 foreach(Ticket x in tickArray)
                 {
@@ -57,18 +56,21 @@ namespace DSFinalProject
             }
             foreach (Ticket x in tickArray)
             {
-                this.tickets.Enqueue(x);
+                this.tickets.Enqueue(x); // re-adds all tickets to the queue in sorted order
             }
         }
-
-        public void ShowAllTickets()
+        public string FinishTicket() // simulates the completion of a ticket and sending it out to the restauraunt. 
+        {
+            return this.tickets.Dequeue().ToString();
+        }
+        public void ShowAllTickets() // calls ToString for all tickets in queue.
         {
             while(this.tickets.Count != 0)
             {
                 Ticket x = this.tickets.Dequeue();
                 Console.WriteLine(x.ToString());
                 Console.WriteLine();
-                Console.WriteLine();
+                Console.WriteLine(); // two lines of whitespace to separate output and increase readability.
             }
         }
     }
