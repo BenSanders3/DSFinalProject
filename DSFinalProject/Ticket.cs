@@ -61,6 +61,15 @@ namespace DSFinalProject
             this.orderPlaced = DateTime.Now.ToString("HH:mm:ss tt");  // Same as other constructor but server name and table number are provided
             this.orders = GetOrders();
         }
+        
+        public Ticket(string server, string tableNum, double orderTotal, ArrayList orders)  // this exists purely so the unit tests can work and should never be used otherwise
+        {
+            this.server = server;
+            this.tableNum = tableNum;
+            this.orderPlaced = DateTime.Now.ToString("HH:mm:ss tt");
+            this.orderTotal = orderTotal;
+            this.orders = orders;
+        }
 
         private ArrayList GetOrders()  // Function is called on ticket creationm, gets all orders for that ticket
         {
