@@ -30,11 +30,11 @@ using System.Threading.Tasks;
 namespace DSFinalProject
 {
     public class Ticket { 
-        private string server;  // Server name, often added in ticket creation call but can be added as user input as well to simulate real life
-        private string tableNum;  // String in case table is called B10 (for Bar, seat 10) or something similar
-        private string orderPlaced; // Value for time ticket was created, used to sort tickets later. Stored as string for printing reasons.
-        private double orderTotal = 0.00;  // Total cost of all items, Printed at end of ticket ToString()
-        private ArrayList orders;  // ArrayList of all orders/prices and 1/2 required Data Structures for this assignment
+        public string server;  // Server name, often added in ticket creation call but can be added as user input as well to simulate real life
+        public string tableNum;  // String in case table is called B10 (for Bar, seat 10) or something similar
+        public string orderPlaced; // Value for time ticket was created, used to sort tickets later. Stored as string for printing reasons.
+        public double orderTotal = 0.00;  // Total cost of all items, Printed at end of ticket ToString()
+        public ArrayList orders;  // ArrayList of all orders/prices and 1/2 required Data Structures for this assignment
 
         public Ticket()
         {

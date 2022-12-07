@@ -34,7 +34,7 @@ namespace DSFinalProject
 {
     public class TicketRack
     {
-        private Queue<Ticket> tickets;  // creates priorityQueue to hold all tickets and is 1/2 of the required Data Structures for this assignment
+        public Queue<Ticket> tickets;  // creates priorityQueue to hold all tickets and is 1/2 of the required Data Structures for this assignment
 
         public TicketRack()  // allows creation of ticket rack
         {
