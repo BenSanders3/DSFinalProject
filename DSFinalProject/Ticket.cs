@@ -107,11 +107,11 @@ namespace DSFinalProject
                             Console.WriteLine("Please enter 1 for \"Yes\" or 0 for \"No\"");
                             if (int.TryParse(Console.ReadLine(), out cont))
                             {
-
+                                
                             }
                             else
                             {
-                                Console.WriteLine("Invalid value");  // Since it already states the "please enter...", only "invlalid value" is printed
+                                Console.WriteLine("Invalid value, Please enter 1 for \"Yes\" or 0 for \"No\"");  // Since it already states the "please enter...", only "invlalid value" is printed
                             }
                         }
                     }
